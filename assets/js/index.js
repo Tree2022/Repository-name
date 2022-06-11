@@ -8,7 +8,8 @@ function getUserInfo() {
         success: (res) => {
             console.log(res);
             if (res.status !== 0) return layer.msg('获取用户信息失败')
-            layer.msg('获取用户信息成功！');
+                // console.log(res.data);
+                // layer.msg('获取用户信息成功！');
             rederAvatar(res.data)
         },
         // complete: (res) => {
@@ -23,13 +24,15 @@ function getUserInfo() {
 //渲染用户信息
 
 const rederAvatar = (user) => {
-    const name = user.nikename || user.username;
+    const name = user.username || user.nikename;
+    console.log(user);
+    console.log(name);
     $("#welcome").html(`欢迎${name}`);
     if (user.user_pic !== null) {
         $(".layui-nav-img").attr("src", user.user_pic).show();
         $(".text-avatar").hide();
     } else {
-        // 渲染文本头像
+        // 渲染文本头88像
         $(".layui-nav-img").hide();
         let firstName = name[0].toUpperCase();
         $(".text-avatar").html(firstName).show();
