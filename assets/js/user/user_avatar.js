@@ -18,7 +18,6 @@ $(function() {
     });
 
     const layer = layui.layer;
-
     // 为文件上传框绑定 change 事件
     $("#file").change((e) => {
         const fileList = e.target.files.length;
